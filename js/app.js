@@ -105,10 +105,15 @@ function clickHandler(event){
 
 // function to display results of survey once the number of rounds maxes out (default is 25 rounds)
 function displayResults(){
+  parent.textContent = '';
+  parent = document.getElementById('results');
+  var listElement = document.createElement('ul');
+
   for(var i=0; i<allProducts.length; i++){
-    console.log(`${allProducts[i].title} had ${allProducts[i].votes} votes and was shown ${allProducts[i].views} times.`);
+    listElement = document.createElement('li');
+    listElement.textContent = `${allProducts[i].title} had ${allProducts[i].votes} votes and was shown ${allProducts[i].views} times.`
   }
-  
+  parent.appendChild(listElement);
 }
 
 
