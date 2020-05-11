@@ -1,6 +1,7 @@
 'use strict';
 
 var parent = document.getElementById('product');
+var numberOfRounds = 25;
 var allProducts = [];
 
 function ProductImage(url, alt, title){
@@ -80,21 +81,36 @@ function getRandomProduct(){
 }
 
 // Create function to handle the click
-
 // set up event listener
+parent.addEventListener('click', clickHandler);
 
-parent.addEventListener('click', function(){
+// Event handler
+function clickHandler(event){
   var titleOfProductThatWasClickedOn = event.target.title;
 
   for(var i=0; i<allProducts.length; i++){
     if(titleOfProductThatWasClickedOn === allProducts[i].title){
       allProducts[i].votes++
-    }
+      numberOfRounds--;
+    } 
   }
 
-getRandomProduct();
+  if (numberOfRounds===0) {
+    parent.removeEventListener('click', clickHandler);
+    displayResults();
+  } else {
+    getRandomProduct();
+  }
+};
 
-});
+// function to display results of survey once the number of rounds maxes out (default is 25 rounds)
+function displayResults(){
+  for(var i=0; i<allProducts.length; i++){
+    console.log(`${allProducts[i].title} had ${allProducts[i].votes} votes and was shown ${allProducts[i].views} times.`);
+  }
+  
+}
+
 
 getRandomProduct();
 
