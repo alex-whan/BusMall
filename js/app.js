@@ -3,7 +3,7 @@
 var parent = document.getElementById('product');
 var allProducts = [];
 
-function ProductImage(){
+function ProductImage(url, alt, title){
   this.filePath = url;
   this.alt = alt;
   this.title = title;
@@ -95,4 +95,6 @@ parent.addEventListener('click', function(){
 getRandomProduct();
 
 });
+
+getRandomProduct();
 
