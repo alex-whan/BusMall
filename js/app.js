@@ -112,10 +112,10 @@ function displayResults(){
   for(var i=0; i<allProducts.length; i++){
     listElement = document.createElement('li');
     listElement.textContent = `${allProducts[i].title} had ${allProducts[i].votes} votes and was shown ${allProducts[i].views} times.`
+    parent.appendChild(listElement);
   }
   parent.appendChild(listElement);
 }
-
 
 getRandomProduct();
 
