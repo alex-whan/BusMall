@@ -53,6 +53,28 @@ new ProductImage('water-can', '.jpg');
 new ProductImage('wine-glass', '.jpg');
 
 
+
+
+function getRandomIndex(){
+  var index = getRandomNumber(allProducts.length)
+  while(uniqueIndexArray.includes(index)){
+    index = getRandomNumber(allProducts.length);
+  }
+
+  uniqueIndexArray.push(index);
+
+  if(uniqueIndexArray.length > 3){
+    uniqueIndexArray.shift();
+  }
+
+  return index;
+}
+
+
+
+
+
+
 // Helper function to get the random number
 function getRandomNumber(max){
   return Math.floor(Math.random() * max);
