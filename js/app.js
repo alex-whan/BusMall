@@ -1,6 +1,6 @@
 'use strict';
 
-var parent = document.getElementById('product');
+var parentElement = document.getElementById('product');
 var numberOfRounds = 25;
 var allProducts = [];
 
