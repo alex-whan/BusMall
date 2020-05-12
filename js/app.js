@@ -53,10 +53,9 @@ new ProductImage('water-can', '.jpg');
 new ProductImage('wine-glass', '.jpg');
 
 
-
 // Helper function to get the random number
-function randomNumber(min = 0, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function getRandomNumber(max){
+  return Math.floor(Math.random() * max);
 }
 
 // Render THREE random images to DOM from the product image array
