@@ -1,0 +1,10 @@
+body {
+  background-color: salmon;
+}
+
+img {
+  border: solid black 2px;
+  height: auto;
+  margin: 5px;
+  width: 30%;
+}
