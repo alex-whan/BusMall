@@ -20,7 +20,7 @@ ProductImage.prototype.render = function(){
   // create an element - img
   var imageElement = document.createElement('img');
   // fill the src with the path to the specific product
-  imageElement.setAttribute('src', this.filePath);
+  imageElement.setAttribute('src', this.filepath);
   // fill in the alt which is going to be the name of the image minus the file extension (.jpg)
   imageElement.setAttribute('alt', this.alt);
   // fill in the title with the same text as the alt
@@ -28,7 +28,6 @@ ProductImage.prototype.render = function(){
   // appendChild to parent element (imageElement)
   parentElement.appendChild(imageElement);
 }
-
 
 // BusMall Product Object Instances
 new ProductImage('bag', '.jpg');

@@ -8,3 +8,7 @@ img {
   margin: 5px;
   width: 30%;
 }
+
+canvas {
+  border: solid black 2px;
+}
