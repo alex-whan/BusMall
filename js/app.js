@@ -1,12 +1,15 @@
 'use strict';
 
+var uniqueIndexArray = [];
+var allProducts = [];
 var parentElement = document.getElementById('product');
 var numberOfRounds = 25;
-var allProducts = [];
+var names = [];
+var votes = [];
 
-function ProductImage(url, alt, title){
-  this.filePath = url;
-  this.alt = alt;
+function ProductImage(name, extension){
+  this.filePath = `img/${name}${extension}`;
+  this.alt = name;
   this.title = title;
   this.views = 0;
   this.votes = 0;
