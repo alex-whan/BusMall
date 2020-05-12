@@ -16,27 +16,6 @@ function ProductImage(name, extension){
   allProducts.push(this);
 }
 
-new ProductImage('img/bag.jpg', 'R2-D2 Roller Bag', 'R2-D2 Roller Bag')
-new ProductImage('img/banana.jpg', 'Banana Slicer', 'Banana Slicer')
-new ProductImage('img/bathroom.jpg', 'Toilet Paper Tablet Stand', 'Toilet Paper Tablet Stand')
-new ProductImage('img/boots.jpg', 'Toeless Rain Boots', 'Toeless Rain Boots')
-new ProductImage('img/breakfast.jpg', 'All-in-One Breakfast Station', 'All-in-One Breakfast Station')
-new ProductImage('img/bubblegum.jpg', 'Meatball Bubble Gum', 'Meatball Bubble Gum')
-new ProductImage('img/chair.jpg', 'Rounded Chair', 'Rounded Chair')
-new ProductImage('img/cthulhu.jpg', 'Cthulhu Action Figure', 'Cthulhu Action Figure')
-new ProductImage('img/dog-duck.jpg', 'Dog Duck Mask', 'Dog Duck Mask')
-new ProductImage('img/dragon.jpg', 'Dragon Meat', 'Dragon Meat')
-new ProductImage('img/pen.jpg', 'Utensil Pens', 'Utensil Pens')
-new ProductImage('img/pet-sweep.jpg', 'Pet Sweep', 'Pet Sweep')
-new ProductImage('img/scissors.jpg', 'Pizza Scissors', 'Pizza Scissors')
-new ProductImage('img/shark.jpg', 'Shark Sleeping Bag', 'Shark Sleeping Bag')
-new ProductImage('img/sweep.png', 'Baby Sweeper', 'Baby Sweeper')
-new ProductImage('img/tauntaun.jpg', 'Tauntaun Sleeping Bag', 'Tauntaun Sleeping Bag')
-new ProductImage('img/unicorn.jpg', 'Unicorn Meat', 'Unicorn Meat')
-new ProductImage('img/usb.gif', 'Tentacle USB Drive', 'Tentacle USB Drive')
-new ProductImage('img/water-can.jpg', 'Curved Watering Can', 'Curved Watering Can')
-new ProductImage('img/wine-glass.jpg', 'Enclosed Wine Glass', 'Enclosed Wine Glass')
-
 ProductImage.prototype.renderImage = function(){
   // create an element - img
   var imageElement = document.createElement('img');
@@ -49,6 +28,31 @@ ProductImage.prototype.renderImage = function(){
   // appendChild to parent element (imageElement)
   parent.appendChild(imageElement);
 }
+
+
+// BusMall Product Object Instances
+new ProductImage('bag', '.jpg');
+new ProductImage('banana', '.jpg');
+new ProductImage('bathroom', '.jpg');
+new ProductImage('boots', '.jpg');
+new ProductImage('breakfast', '.jpg');
+new ProductImage('bubblegum', '.jpg');
+new ProductImage('chair', '.jpg');
+new ProductImage('cthulhu', '.jpg');
+new ProductImage('dog-duck', '.jpg');
+new ProductImage('dragon', '.jpg');
+new ProductImage('pen', '.jpg');
+new ProductImage('pet-sweep', '.jpg');
+new ProductImage('scissors', '.jpg');
+new ProductImage('shark', '.jpg');
+new ProductImage('sweep', '.png');
+new ProductImage('tauntaun', '.jpg');
+new ProductImage('unicorn', '.jpg');
+new ProductImage('usb', '.gif');
+new ProductImage('water-can', '.jpg');
+new ProductImage('wine-glass', '.jpg');
+
+
 
 // Helper function to get the random number
 function randomNumber(min = 0, max){
