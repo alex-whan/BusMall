@@ -8,11 +8,11 @@ var names = [];
 var votes = [];
 
 function ProductImage(name, extension){
-  this.filePath = `img/${name}${extension}`;
+  this.filepath = `img/${name}${extension}`;
   this.alt = name;
-  this.title = title;
-  this.views = 0;
+  this.title = name;
   this.votes = 0;
+  this.views = 0;
   allProducts.push(this);
 }
 
