@@ -1,5 +1,5 @@
 body {
-  background-color: salmon;
+  background-color: lightgrey;
 }
 
 img {
@@ -7,4 +7,8 @@ img {
   height: auto;
   margin: 5px;
   width: 30%;
+}
+
+canvas {
+  border: solid black 2px;
 }
