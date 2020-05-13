@@ -152,7 +152,7 @@ function generateChart(){
                              
         ],
           
-      },
+      }, 
       
       options: {
           scales: {
@@ -168,10 +168,9 @@ function generateChart(){
                   }
               }]
           }
-      }
-  },
-  
-  );
+      } //options ends here*/
+  });
+
 }
 
 
