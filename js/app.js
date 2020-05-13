@@ -6,6 +6,7 @@ var parentElement = document.getElementById('product');
 var numberOfRounds = 25;
 var names = [];
 var votes = [];
+var views = [];
 
 function ProductImage(name, extension){
   this.filepath = `img/${name}${extension}`;
@@ -65,7 +66,7 @@ function getRandomIndex(){
   uniqueIndexArray.push(index);
 
   // if array is more than 3 products long, shift from beginning in order to add new products
-  if(uniqueIndexArray.length > 3){
+  if(uniqueIndexArray.length > 6){
     uniqueIndexArray.shift();
   }
 
@@ -127,6 +128,7 @@ function makeNamesArray(){
   for(var i=0; i<allProducts.length; i++){
     names.push(allProducts[i].title);
     votes.push(allProducts[i].votes);
+    views.push(allProducts[i].views);
   }
 
   generateChart();
@@ -135,17 +137,66 @@ function makeNamesArray(){
 function generateChart(){
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
           labels: names,
           datasets: [{
               label: '# of Votes',
               data: votes,
               backgroundColor: [             
-                  'rgba(245, 100, 50, 0.5)'
+                'rgba(255, 99, 132, 0.75)',
+                'rgba(54, 162, 235, 0.75)',
+                'rgba(255, 206, 86, 0.75)',
+                'rgba(75, 192, 192, 0.75)',
+                'rgba(153, 102, 255, 0.75)',
+                'rgba(255, 99, 132, 0.75)',
+                'rgba(54, 162, 235, 0.75)',
+                'rgba(255, 206, 86, 0.75)',
+                'rgba(75, 192, 192, 0.75)',
+                'rgba(153, 102, 255, 0.75)',
+                'rgba(255, 99, 132, 0.75)',
+                'rgba(54, 162, 235, 0.75)',
+                'rgba(255, 206, 86, 0.75)',
+                'rgba(75, 192, 192, 0.75)',
+                'rgba(153, 102, 255, 0.75)',
+                'rgba(255, 99, 132, 0.75)',
+                'rgba(54, 162, 235, 0.75)',
+                'rgba(255, 206, 86, 0.75)',
+                'rgba(75, 192, 192, 0.75)',
+                'rgba(255, 159, 64, 0.75)'
               ],
               borderColor: [
-                  'rgba(66, 66, 66, 1)'
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+                  'rgba(66, 66, 66, 1)',
+              ],
+              borderWidth: 2
+            }, 
+            {
+              label: '# of Views',
+              data: views,
+              backgroundColor: [             
+
+              ],
+              borderColor: [
+
               ],
               borderWidth: 2
             }
