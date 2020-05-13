@@ -137,7 +137,7 @@ function makeNamesArray(){
 function generateChart(){
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
           labels: names,
           datasets: [{
@@ -211,7 +211,7 @@ function generateChart(){
                 stacked: true,
               }],
               yAxes: [{ 
-                stacked: false,
+                stacked: true,
                 
                 
                   ticks: {
