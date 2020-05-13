@@ -225,5 +225,28 @@ function generateChart(){
 }
 
 
+// 1. Global variable to hold our JSON versions of the products (turn this thing into JSON to put into local storage)
+var stringifiedProducts = JSON.stringify(allProducts);
+console.log('JSON for allProducts array:', stringifiedProducts);
+
+// 2. "Set" our JSON item into Local Storage - with key(name) and value (JSON)
+localStorage.setItem('products', stringifiedProducts);
+
+// 3. "Get" item out of local storage with key
+var productsFromLocalStorage = localStorage.getItem('products');
+console.log('These are the products from Local Storage:', productsFromLocalStorage);
+
+// 4. Turn stored items back into JS from JSON with parsing
+var productsTurnedBackIntoJavaScript = JSON.parse(productsFromLocalStorage);
+console.log('Parsed JSON products back into JS:', productsTurnedBackIntoJavaScript);
+
+// Now we need to put all this back through a constructor function:
+
+/* function recreateProductImageConstructor(){
+  for(var i=0; i<productsTurnedBackIntoJavaScript.length; i++){
+    new ProductImage(productsTurnedBackIntoJavaScript[i].filepath, productsTurnedBackIntoJavaScript[i].title);
+  }
+  
+} */
 
 
