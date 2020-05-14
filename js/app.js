@@ -3,17 +3,18 @@
 var uniqueIndexArray = [];
 var allProducts = [];
 var parentElement = document.getElementById('product');
-var numberOfRounds = 25;
+var maxRounds = 10;
+var totalRounds; // established NAME in global scope without VALUE
 var names = [];
 var votes = [];
 var views = [];
 
-function ProductImage(name, extension){
-  this.filepath = `img/${name}${extension}`;
+function ProductImage(url, name, votes=0, views=0){
+  this.filepath = url;
   this.alt = name;
   this.title = name;
-  this.votes = 0;
-  this.views = 0;
+  this.votes = votes;
+  this.views = views;
   allProducts.push(this);
 }
 
@@ -29,28 +30,6 @@ ProductImage.prototype.render = function(){
   // appendChild to parent element (imageElement)
   parentElement.appendChild(imageElement);
 }
-
-// BusMall Product Object Instances
-new ProductImage('bag', '.jpg');
-new ProductImage('banana', '.jpg');
-new ProductImage('bathroom', '.jpg');
-new ProductImage('boots', '.jpg');
-new ProductImage('breakfast', '.jpg');
-new ProductImage('bubblegum', '.jpg');
-new ProductImage('chair', '.jpg');
-new ProductImage('cthulhu', '.jpg');
-new ProductImage('dog-duck', '.jpg');
-new ProductImage('dragon', '.jpg');
-new ProductImage('pen', '.jpg');
-new ProductImage('pet-sweep', '.jpg');
-new ProductImage('scissors', '.jpg');
-new ProductImage('shark', '.jpg');
-new ProductImage('sweep', '.png');
-new ProductImage('tauntaun', '.jpg');
-new ProductImage('unicorn', '.jpg');
-new ProductImage('usb', '.gif');
-new ProductImage('water-can', '.jpg');
-new ProductImage('wine-glass', '.jpg');
 
 function getRandomIndex(){
   var index = getRandomNumber(allProducts.length);
@@ -99,29 +78,29 @@ function clickHandler(event){
     if(titleOfProductThatWasClickedOn === allProducts[i].title){
       // Add a vote to that product
       // Subtract one round from survey (counter)
-      allProducts[i].votes++
-      numberOfRounds--;
-   
-      if (numberOfRounds===0) {
-        // Turn off event listener
-        parentElement.removeEventListener('click', clickHandler);
-        makeNamesArray();
-      }   
+      allProducts[i].votes++;
+      totalRounds++;   
     }
   }
 
-  displayImage();
-  displayImage();
-  displayImage();
-  // Listen for click - render new images when we hear it
-  // Track views and votes for each image
+  if (totalRounds===maxRounds) {
+    // Turn off event listener
+    parentElement.removeEventListener('click', clickHandler);
+    localStorage.removeItem('totalRounds');
+    makeNamesArray();
+  } else {
+    // save totalVotes here
+    // Don't need to stringify the number in this case
+    localStorage.setItem('totalRounds', totalRounds);
+    
+    var stringifiedProducts = JSON.stringify(allProducts);
+    localStorage.setItem('products', stringifiedProducts);
+
+    displayImage();
+    displayImage();
+    displayImage();
+  }
 }
-
-displayImage();
-displayImage();
-displayImage();
-
-parentElement.addEventListener('click', clickHandler);
 
 // Loop over all products and make an array of just the names
 function makeNamesArray(){
@@ -134,6 +113,7 @@ function makeNamesArray(){
   generateChart();
 }
 
+// Generate graph using Chart.js
 function generateChart(){
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
@@ -208,7 +188,7 @@ function generateChart(){
       options: {
           scales: {
               xAxes: [{
-                stacked: true,
+                stacked: false,
               }],
               yAxes: [{ 
                 stacked: true,
@@ -224,29 +204,57 @@ function generateChart(){
 
 }
 
+function pageStartUp(){
+  var productsFromLocalStorage = localStorage.getItem('products');
 
-// 1. Global variable to hold our JSON versions of the products (turn this thing into JSON to put into local storage)
-var stringifiedProducts = JSON.stringify(allProducts);
-console.log('JSON for allProducts array:', stringifiedProducts);
+  // BusMall Product Object Instances
+  // if statement goes here
+  if(productsFromLocalStorage === null){
+    new ProductImage('/img/bag.jpg', 'bag');
+    new ProductImage('/img/banana.jpg', 'banana');
+    new ProductImage('/img/bathroom.jpg', 'bathroom');
+    new ProductImage('/img/boots.jpg', 'boots');
+    new ProductImage('/img/breakfast.jpg', 'breakfast');
+    new ProductImage('/img/bubblegum.jpg', 'bubblegum');
+    new ProductImage('/img/chair.jpg', 'chair');
+    new ProductImage('/img/cthulhu.jpg', 'cthulhu');
+    new ProductImage('/img/dog-duck.jpg', 'dog-duck');
+    new ProductImage('/img/dragon.jpg', 'dragon');
+    new ProductImage('/img/pen.jpg', 'pen');
+    new ProductImage('/img/pet-sweep.jpg', 'pet-sweep');
+    new ProductImage('/img/scissors.jpg', 'scissors');
+    new ProductImage('/img/shark.jpg', 'shark');
+    new ProductImage('/img/sweep.jpg', 'sweep');
+    new ProductImage('/img/tauntaun.jpg', 'tauntaun');
+    new ProductImage('/img/unicorn.jpg', 'unicorn');
+    new ProductImage('/img/usb.jpg', 'usb');
+    new ProductImage('/img/water-can.jpg', 'water-can');
+    new ProductImage('/img/wine-glass.jpg', 'wine-glass');
+  } else {
+    // recreate ProductImage objects using local storage
+    var parsedProducts = JSON.parse(productsFromLocalStorage);
 
-// 2. "Set" our JSON item into Local Storage - with key(name) and value (JSON)
-localStorage.setItem('products', stringifiedProducts);
-
-// 3. "Get" item out of local storage with key
-var productsFromLocalStorage = localStorage.getItem('products');
-console.log('These are the products from Local Storage:', productsFromLocalStorage);
-
-// 4. Turn stored items back into JS from JSON with parsing
-var productsTurnedBackIntoJavaScript = JSON.parse(productsFromLocalStorage);
-console.log('Parsed JSON products back into JS:', productsTurnedBackIntoJavaScript);
-
-// Now we need to put all this back through a constructor function:
-
-/* function recreateProductImageConstructor(){
-  for(var i=0; i<productsTurnedBackIntoJavaScript.length; i++){
-    new ProductImage(productsTurnedBackIntoJavaScript[i].filepath, productsTurnedBackIntoJavaScript[i].title);
+    for(var i=0; i<parsedProducts.length; i++){
+      new ProductImage(parsedProducts[i].filepath, parsedProducts[i].title, parsedProducts[i].votes, parsedProducts[i].views);
+    }
   }
-  
-} */
+  // Load number of rounds if stored, otherwise totalRounds is set to 0
+  var roundsFromStorage = localStorage.getItem('totalRounds');
+  if(roundsFromStorage){ // truthy (null) 
+    totalRounds = parseInt(roundsFromStorage);
+  } else {
+    totalRounds = 0;
+  }
+
+  displayImage();
+  displayImage();
+  displayImage();
+
+  parentElement.addEventListener('click', clickHandler);
+
+}
+
+// run page start up function
+pageStartUp();
 
 
