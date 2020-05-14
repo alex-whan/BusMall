@@ -3,7 +3,7 @@
 var uniqueIndexArray = [];
 var allProducts = [];
 var parentElement = document.getElementById('product');
-var maxRounds = 10;
+var maxRounds = 25;
 var totalRounds; // established NAME in global scope without VALUE
 var names = [];
 var votes = [];
