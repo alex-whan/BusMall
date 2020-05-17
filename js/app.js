@@ -113,7 +113,7 @@ function makeNamesArray(){
   generateChart();
 }
 
-// Generate graph using Chart.js
+// Generate graph using Chart.js - two datasets
 function generateChart(){
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
@@ -199,7 +199,7 @@ function generateChart(){
                   }
               }]
           }
-      } //options ends here*/
+      }
   });
 
 }
@@ -208,7 +208,7 @@ function pageStartUp(){
   var productsFromLocalStorage = localStorage.getItem('products');
 
   // BusMall Product Object Instances
-  // if statement goes here
+  // if statement - if there isn't local storage present, generate the ProductImage items below
   if(productsFromLocalStorage === null){
     new ProductImage('/img/bag.jpg', 'bag');
     new ProductImage('/img/banana.jpg', 'banana');
@@ -231,9 +231,10 @@ function pageStartUp(){
     new ProductImage('/img/water-can.jpg', 'water-can');
     new ProductImage('/img/wine-glass.jpg', 'wine-glass');
   } else {
-    // recreate ProductImage objects using local storage
+    // If there is local storage present, recreate ProductImage objects using local storage
     var parsedProducts = JSON.parse(productsFromLocalStorage);
 
+    // loop over parsedProducts array to feed stored items into constructor function
     for(var i=0; i<parsedProducts.length; i++){
       new ProductImage(parsedProducts[i].filepath, parsedProducts[i].title, parsedProducts[i].votes, parsedProducts[i].views);
     }
