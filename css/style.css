@@ -1,5 +1,5 @@
 body {
-  background-color: lightgrey;
+  background-color: lightcyan;
 }
 
 img {
@@ -7,4 +7,57 @@ img {
   height: auto;
   margin: 5px;
   width: 30%;
+}
+
+ul {
+  border: black 2px solid;
+  background-color: darkslateblue;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  list-style-type: none;
+  line-height: 46px;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  width: 350px;
+  
+}
+
+li {
+  display: inline-block;
+  margin:5px;
+  padding: 5px;
+}
+
+li:hover{
+  background-color: lightblue;
+}
+
+h1 {
+  font-size: 2.5em;
+  float: left;
+  line-height: 40px;
+  text-align: center;
+  width: 200px;
+  
+}
+
+.nav-bar{
+  float: right;
+  padding-bottom: 200px;
+  overflow: hidden;
+}
+
+header {
+  background-color: lightskyblue;
+  display: inline-block;
+  height: 80px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+canvas {
+  display: block;
 }
