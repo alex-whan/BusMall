@@ -210,26 +210,26 @@ function pageStartUp(){
   // BusMall Product Object Instances
   // if statement - if there isn't local storage present, generate the ProductImage items below
   if(productsFromLocalStorage === null){
-    new ProductImage('/img/bag.jpg', 'bag');
-    new ProductImage('/img/banana.jpg', 'banana');
-    new ProductImage('/img/bathroom.jpg', 'bathroom');
-    new ProductImage('/img/boots.jpg', 'boots');
-    new ProductImage('/img/breakfast.jpg', 'breakfast');
-    new ProductImage('/img/bubblegum.jpg', 'bubblegum');
-    new ProductImage('/img/chair.jpg', 'chair');
-    new ProductImage('/img/cthulhu.jpg', 'cthulhu');
-    new ProductImage('/img/dog-duck.jpg', 'dog-duck');
-    new ProductImage('/img/dragon.jpg', 'dragon');
-    new ProductImage('/img/pen.jpg', 'pen');
-    new ProductImage('/img/pet-sweep.jpg', 'pet-sweep');
-    new ProductImage('/img/scissors.jpg', 'scissors');
-    new ProductImage('/img/shark.jpg', 'shark');
-    new ProductImage('/img/sweep.jpg', 'sweep');
-    new ProductImage('/img/tauntaun.jpg', 'tauntaun');
-    new ProductImage('/img/unicorn.jpg', 'unicorn');
-    new ProductImage('/img/usb.jpg', 'usb');
-    new ProductImage('/img/water-can.jpg', 'water-can');
-    new ProductImage('/img/wine-glass.jpg', 'wine-glass');
+    new ProductImage('img/bag.jpg', 'bag');
+    new ProductImage('img/banana.jpg', 'banana');
+    new ProductImage('img/bathroom.jpg', 'bathroom');
+    new ProductImage('img/boots.jpg', 'boots');
+    new ProductImage('img/breakfast.jpg', 'breakfast');
+    new ProductImage('img/bubblegum.jpg', 'bubblegum');
+    new ProductImage('img/chair.jpg', 'chair');
+    new ProductImage('img/cthulhu.jpg', 'cthulhu');
+    new ProductImage('img/dog-duck.jpg', 'dog-duck');
+    new ProductImage('img/dragon.jpg', 'dragon');
+    new ProductImage('img/pen.jpg', 'pen');
+    new ProductImage('img/pet-sweep.jpg', 'pet-sweep');
+    new ProductImage('img/scissors.jpg', 'scissors');
+    new ProductImage('img/shark.jpg', 'shark');
+    new ProductImage('img/sweep.jpg', 'sweep');
+    new ProductImage('img/tauntaun.jpg', 'tauntaun');
+    new ProductImage('img/unicorn.jpg', 'unicorn');
+    new ProductImage('img/usb.jpg', 'usb');
+    new ProductImage('img/water-can.jpg', 'water-can');
+    new ProductImage('img/wine-glass.jpg', 'wine-glass');
   } else {
     // If there is local storage present, recreate ProductImage objects using local storage
     var parsedProducts = JSON.parse(productsFromLocalStorage);
